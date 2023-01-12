@@ -1,33 +1,11 @@
 //Nivell 1 ex 1
-//resolve: funcion de JS, la funcion entiende que ha funcionado
-//reject: funcion de JS, la funcion entiende que ha dado error
-const prom = false; // variable que definirá si el resultado va a resolve o reject
-const miFuncion = new Promise((resolve, reject) => {
-  if (prom) {
-    const respuesta = "Promesa is true usamos resolve";
-    resolve(respuesta);
-  } else {
-    const respuesta = "Promesa is false usamos reject";
-    reject(respuesta);
-  }
-});
-
-miFuncion //<=la promesa
-  .then((res) => {
-    //resolve data
-    console.log(res);
-  })
-  .catch((err) => {
-    //reject data
-    console.log(err);
-  });
-
-const funcionQueRetornaPromise = () => {
+const prom = true;
+const miFuncion = () => {
   return new Promise((resolve, reject) => {
     if (prom) {
-      resolve("Resolve: La promesa era true");
+      resolve("Nivell 1 ex 1 resolve: La promesa era true");
     } else {
-      reject("Reject: La promesa era falsa");
+      reject("Nivell 1 ex 1 reject: La promesa era falsa");
     }
   })
     .then((res) => {
@@ -35,8 +13,7 @@ const funcionQueRetornaPromise = () => {
     })
     .catch((err) => console.log(err));
 };
-funcionQueRetornaPromise();
-
+miFuncion();
 //NIVELL 1 ex 2
 let x = Math.floor(Math.random() * 5);
 x = x % 2;
@@ -88,7 +65,6 @@ let salaries = [
 let idEmpleado = Math.floor(Math.random(1) * 4);
 const getEmployee = () => {
   const employee = new Promise((resolve, reject) => {
-    //Codigo apra buscar el ID
     let a = employees.find((x) => {
       return x.id === idEmpleado;
     });
@@ -96,10 +72,11 @@ const getEmployee = () => {
   });
   employee
     .then((res) => {
-      console.log(res);
+      console.log("Nivell 2 ex 1:", res);
       return res;
     })
     .catch((err) => {
+      console.log("Nivell 2 ex 1:", err);
       return err;
     });
 
@@ -116,13 +93,14 @@ const getSalary = () => {
   });
   salary
     .then((res) => {
-      console.log(res);
+      console.log("Nivell 2 ex 2:", res);
       return res;
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Nivell 2 ex 2:", err);
       return err;
     });
+
   return salary;
 };
 // getSalary();
@@ -133,5 +111,5 @@ const exTres = () => {
     .catch(err => console.log('Respuesta nivell 3 ex 1: No es troba el treballador'))
 
 };
-
 exTres();
+
