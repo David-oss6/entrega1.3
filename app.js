@@ -85,9 +85,8 @@ let salaries = [
     salary: 2000,
   },
 ];
-let idEmpleado = 1; //Math.floor(Math.random(1) * 4);
+let idEmpleado = Math.floor(Math.random(1) * 4);
 const getEmployee = () => {
-  let respuesta = "";
   const employee = new Promise((resolve, reject) => {
     //Codigo apra buscar el ID
     let a = employees.find((x) => {
@@ -129,10 +128,10 @@ const getSalary = () => {
 // getSalary();
 //NIVELL 2 ex 3
 const exTres = () => {
-  Promise.all([getEmployee, getSalary]).then((res) =>
-    console.log("Respuesta ex 3:", res)
-  );
+  Promise.all([getEmployee(), getSalary()])
+    .then((values) => console.log("Respuesta nivell 2 ex 3:", values))
+    .catch(err => console.log('Respuesta nivell 3 ex 1: No es troba el treballador'))
+
 };
-getEmployee();
-getSalary();
+
 exTres();
